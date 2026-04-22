@@ -1,0 +1,29 @@
+@if (visible()) {
+  <section class="intro-splash" [class.intro-splash--leaving]="leaving()" aria-label="Accoustic360 opening animation">
+    <div class="intro-noise" aria-hidden="true"></div>
+    <div class="intro-grid" aria-hidden="true"></div>
+    <div class="intro-wave intro-wave--one" aria-hidden="true"></div>
+    <div class="intro-wave intro-wave--two" aria-hidden="true"></div>
+
+    <div class="intro-content">
+      <div class="intro-logo-frame">
+        <img src="assets/celluose1.png" alt="Accoustic360 acoustic spray system" />
+      </div>
+
+      <p class="intro-kicker">Spatial sound control</p>
+      <h1>Silence, engineered into the surface.</h1>
+
+      <div class="intro-loader" aria-label="Loading website">
+        <span [style.width.%]="progress()"></span>
+      </div>
+
+      <div class="intro-actions">
+        <button type="button" class="intro-sound" (click)="toggleAmbient()" [attr.aria-pressed]="ambientEnabled()">
+          <span class="intro-sound-icon" aria-hidden="true"></span>
+          {{ ambientEnabled() ? 'Sound On' : 'Turn Sound On' }}
+        </button>
+        <button type="button" class="intro-skip" (click)="skipIntro()">Enter Site</button>
+      </div>
+    </div>
+  </section>
+}

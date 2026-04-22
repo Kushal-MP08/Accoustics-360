@@ -1,1 +1,283 @@
-/* You can add global styles to this file, and also import other style files */
+// Angular Material theming
+@use '@angular/material' as mat;
+
+// Import Sansation from Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+// Apply Material theme
+html {
+  @include mat.theme((
+    density: 0,
+  ));
+}
+
+// ─── CSS DESIGN TOKENS ────────────────────────────────────────────────────────
+:root {
+  --primary:         #2f7d67;
+  --primary-dark:    #174d43;
+  --primary-light:   #e3f2ed;
+  --accent:          #f59e0b;
+  --accent-dark:     #b45309;
+  --aqua:            #0ea5a8;
+  --dark:            #0f172a;
+  --text-primary:    #1e293b;
+  --text-secondary:  #475569;
+  --text-muted:      #94a3b8;
+  --border:          #e2e8f0;
+  --surface:         #f8fafc;
+  --white:           #ffffff;
+
+  --radius-sm:  8px;
+  --radius-md:  16px;
+  --radius-lg:  24px;
+
+  --shadow-sm: 0 2px 8px  rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.10);
+  --shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.15);
+
+  --transition: 0.25s ease;
+
+  --navbar-h: 72px;
+}
+
+// ─── GLOBAL RESET ─────────────────────────────────────────────────────────────
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip; // prevents horizontal scroll without breaking position:sticky
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+}
+
+body {
+  font-family: 'Sansation', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background:
+    linear-gradient(180deg, #ffffff 0%, #f7faf8 100%);
+  color-scheme: light;
+  overflow-x: hidden;
+}
+
+app-root {
+  display: block;
+  min-height: 100vh;
+}
+
+// ─── TYPOGRAPHY ───────────────────────────────────────────────────────────────
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Sansation', sans-serif;
+  line-height: 1.15;
+  color: var(--dark);
+  margin-top: 0;
+}
+
+p { margin-top: 0; }
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+
+  &:hover { text-decoration: none; }
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: 'Sansation', sans-serif;
+}
+
+.btn-icon {
+  width: 1rem;
+  height: 1rem;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: 0 0 auto;
+  transition: transform var(--transition);
+}
+
+a:hover .btn-icon,
+button:hover .btn-icon {
+  transform: translateX(2px);
+}
+
+// ─── SHARED UTILITY CLASSES ───────────────────────────────────────────────────
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.7rem 1.6rem;
+  background: var(--primary);
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border: 2px solid var(--primary);
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 10px 26px rgba(47, 125, 103, 0.16);
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  text-decoration: none;
+
+  &:hover {
+    background: var(--primary-dark);
+    border-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(58, 124, 104, 0.3);
+  }
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.7rem 1.6rem;
+  background: transparent;
+  color: var(--text-primary) !important;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 2px solid var(--border);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition), background var(--transition), transform var(--transition);
+  text-decoration: none;
+
+  &:hover {
+    border-color: var(--primary);
+    color: var(--primary) !important;
+    background: var(--primary-light);
+    transform: translateY(-2px);
+  }
+}
+
+.btn-outline-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.4rem;
+  background: transparent;
+  color: var(--primary) !important;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border: 2px solid var(--primary);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+  text-decoration: none;
+
+  &:hover {
+    background: var(--primary);
+    color: #fff !important;
+  }
+}
+
+// ─── SECTION SHARED STYLES ────────────────────────────────────────────────────
+.section-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.section-title--light { color: #ffffff; }
+
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.eyebrow--light { color: rgba(255, 255, 255, 0.6); }
+
+.title-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: var(--primary);
+  border-radius: 50%;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.title-dot--amber { background: var(--accent); }
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2.5rem;
+}
+
+// ─── MATERIAL OVERRIDES ───────────────────────────────────────────────────────
+.mat-typography,
+.mat-mdc-typography,
+.mat-mdc-button,
+.mat-mdc-toolbar,
+.mat-mdc-list-item,
+.mat-mdc-card,
+.mat-mdc-nav-list,
+.mat-mdc-list-base {
+  font-family: 'Sansation', sans-serif !important;
+}
+
+// ─── CONTAINER ────────────────────────────────────────────────────────────────
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.72s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.72s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .container { padding: 0 1rem; }
+}

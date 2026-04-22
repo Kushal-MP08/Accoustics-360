@@ -1,0 +1,102 @@
+<section class="apps-hero">
+  <div class="container apps-hero-grid">
+    <div class="apps-copy" appRevealOnScroll>
+      <p class="eyebrow">[ Applications ]</p>
+      <h1>Sound control for the spaces where noise becomes design risk.</h1>
+      <p>
+        Acoustic spray works across offices, auditoriums, studios, factories and
+        retrofit shells where continuous ceilings need to stay clean, quiet and
+        premium.
+      </p>
+      <a routerLink="/technology" class="btn-primary">Discuss your space</a>
+    </div>
+
+    <div class="apps-panel" appRevealOnScroll [revealDelay]="140">
+      @for (stat of applicationStats; track stat.value; let i = $index) {
+        <article [style.--app-delay]="(i * 120) + 'ms'">
+          <span>{{ stat.value }}</span>
+          <strong>{{ stat.label }}</strong>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="apps-story">
+  <div class="container story-grid">
+    <article class="story-card story-card--large" appRevealOnScroll>
+      <img src="assets/acoustic-hero-generated.jpg" alt="Premium office ceiling treated with acoustic spray" />
+      <div>
+        <span>Commercial</span>
+        <h2>Open ceilings can stay open and still feel calm.</h2>
+      </div>
+    </article>
+    <article class="story-card" appRevealOnScroll [revealDelay]="100">
+      <img src="assets/acoustic-texture-generated.jpg" alt="Close-up of acoustic spray texture" />
+      <div>
+        <span>Texture</span>
+        <h3>Continuous absorptive surface without panel seams.</h3>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="apps-library">
+  <div class="container">
+    <div class="apps-library-head" appRevealOnScroll>
+      <div>
+        <p class="eyebrow">[ application library ]</p>
+        <h2 class="section-title">Find a use case close to your project <span class="title-dot"></span></h2>
+      </div>
+      <div class="filter-chips" aria-label="Filter applications by type">
+        @for (cat of categories; track cat) {
+          <button
+            type="button"
+            class="filter-chip"
+            [class.filter-chip--active]="activeCategory === cat"
+            (click)="setCategory(cat)">
+            {{ cat }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <div class="apps-grid">
+      @for (project of filteredProjects; track project.id; let i = $index) {
+        <article class="app-card" appRevealOnScroll [revealDelay]="i * 65">
+          <div class="app-card-media">
+            <img [src]="project.image" [alt]="project.title" loading="lazy" />
+            <span class="proj-status" [ngClass]="statusClass(project.status)">
+              {{ project.status }}
+            </span>
+          </div>
+
+          <div class="app-card-body">
+            <div class="app-meta">
+              <span>{{ project.category }}</span>
+              <strong>{{ project.year }}</strong>
+            </div>
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.summary }}</p>
+            <div class="app-tags">
+              @for (tag of project.tags; track tag) {
+                <span>{{ tag }}</span>
+              }
+            </div>
+            <small>{{ project.location }}</small>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="apps-cta">
+  <div class="container apps-cta-inner" appRevealOnScroll>
+    <div>
+      <p class="eyebrow eyebrow--light">[ next step ]</p>
+      <h2>Map your room behaviour before choosing a finish.</h2>
+    </div>
+    <a routerLink="/technology" class="btn-primary">Request acoustic guidance</a>
+  </div>
+</section>

@@ -1,0 +1,17 @@
+.side-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  a {
+    padding: 10px;
+    border-radius: 6px;
+    background: #eee;
+    text-decoration: none;
+    color: #333;
+  }
+
+  a:hover {
+    background: #ddd;
+  }
+}

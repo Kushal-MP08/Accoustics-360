@@ -1,0 +1,241 @@
+<section class="prod-hero">
+  <div class="prod-hero-photo" aria-hidden="true">
+    <img src="assets/product-spray-hero.png" alt="" />
+  </div>
+  <div class="prod-hero-orbit" aria-hidden="true"></div>
+  <div class="container prod-hero-grid">
+    <div class="prod-copy" appRevealOnScroll>
+      <p class="eyebrow">[ Products ]</p>
+      <h1>Material systems for spaces that need calm built in.</h1>
+      <p>
+        Premium spray-applied acoustic finishes that turn exposed ceilings into
+        continuous sound-absorbing surfaces without losing architectural intent.
+      </p>
+
+      <div class="prod-hero-pills">
+        @for (h of heroHighlights; track h) {
+          <span>{{ h }}</span>
+        }
+      </div>
+
+      <div class="prod-hero-actions">
+        <a routerLink="/technology" class="btn-primary">Talk to an acoustic expert</a>
+        <a routerLink="/projects" class="prod-btn-outline">See installations</a>
+      </div>
+
+      <div class="prod-mini-specs" aria-label="Product highlights">
+        <span>Cellulose matrix</span>
+        <span>Architectural colours</span>
+        <span>Ceiling-safe detailing</span>
+      </div>
+    </div>
+
+    <div class="prod-visual" appRevealOnScroll [revealDelay]="130">
+      <div class="spray-lab" aria-label="Spray applied acoustic product system visualization">
+        <div class="ceiling-plane">
+          <span class="ceiling-line ceiling-line--a"></span>
+          <span class="ceiling-line ceiling-line--b"></span>
+          <span class="ceiling-line ceiling-line--c"></span>
+          <div class="sprayed-zone"></div>
+        </div>
+
+        <div class="spray-applicator" aria-hidden="true">
+          <span class="spray-handle"></span>
+          <span class="spray-nozzle"></span>
+        </div>
+
+        <div class="spray-fan" aria-hidden="true">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+
+        <div class="texture-sample">
+          <span></span>
+          <strong>Seamless finish</strong>
+        </div>
+
+        <div class="layer-stack">
+          <div><span>01</span><strong>Primer bond</strong></div>
+          <div><span>02</span><strong>Acoustic fibre</strong></div>
+          <div><span>03</span><strong>Finish coat</strong></div>
+        </div>
+      </div>
+
+      <div class="prod-performance-card">
+        <strong>Up to 1.0 NRC</strong>
+        <span>Absorptive finish without panel grids</span>
+      </div>
+      <div class="prod-depth-card">
+        <span>Build-up</span>
+        <strong>10-40 mm</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="prod-stat-strip">
+  <div class="container prod-stat-grid">
+    @for (stat of performanceStats; track stat.label; let i = $index) {
+      <article appRevealOnScroll [revealDelay]="i * 80">
+        <strong>{{ stat.value }}</strong>
+        <span>{{ stat.label }}</span>
+      </article>
+    }
+  </div>
+</section>
+
+<section class="prod-intro">
+  <div class="container prod-intro-grid">
+    <div class="prod-intro-text" appRevealOnScroll>
+      <p class="eyebrow">[ about the product ]</p>
+      <h2 class="section-title">What is acoustic spray?</h2>
+      <p class="prod-intro-lead">
+        A seamless, spray-applied cellulose coating that controls reverberation
+        while preserving exposed decks, beams, services and architectural intent.
+      </p>
+      <p>
+        Applied directly to concrete, metal deck, gypsum or prepared existing
+        substrates, the system creates a continuous sound-absorptive layer with
+        minimal visual interruption.
+      </p>
+    </div>
+
+    <div class="prod-layer-card" appRevealOnScroll [revealDelay]="120">
+      <div class="layer-row">
+        <span>01</span>
+        <strong>Prepare substrate</strong>
+      </div>
+      <div class="layer-row">
+        <span>02</span>
+        <strong>Spray cellulose system</strong>
+      </div>
+      <div class="layer-row">
+        <span>03</span>
+        <strong>Finish colour and texture</strong>
+      </div>
+      <p>Clean detailing around lights, sprinklers, ducts and edge profiles.</p>
+    </div>
+  </div>
+</section>
+
+<section class="prod-systems">
+  <div class="container">
+    <div class="section-header" appRevealOnScroll>
+      <div>
+        <p class="eyebrow eyebrow--light">[ system families ]</p>
+        <h2 class="section-title section-title--light">Choose the build-up by room behaviour.</h2>
+      </div>
+    </div>
+
+    <div class="system-grid">
+      @for (system of productSystems; track system.name; let i = $index) {
+        <article class="system-card" appRevealOnScroll [revealDelay]="i * 80">
+          <div class="system-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 12h16"></path>
+              <path d="M7 8h10"></path>
+              <path d="M9 16h6"></path>
+            </svg>
+          </div>
+          <h3>{{ system.name }}</h3>
+          <p>{{ system.use }}</p>
+          <dl>
+            <div><dt>Thickness</dt><dd>{{ system.thickness }}</dd></div>
+            <div><dt>NRC</dt><dd>{{ system.nrc }}</dd></div>
+            <div><dt>Finish</dt><dd>{{ system.finish }}</dd></div>
+          </dl>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="prod-benefits">
+  <div class="container">
+    <div class="benefit-layout">
+      <div class="benefit-heading" appRevealOnScroll>
+        <p class="eyebrow">[ why choose us ]</p>
+        <h2 class="section-title">Performance that stays visually quiet.</h2>
+      </div>
+
+      <div class="prod-benefits-grid">
+        @for (b of benefits; track b.title; let i = $index) {
+          <article class="prod-benefit-card" appRevealOnScroll [revealDelay]="i * 80">
+            <div class="benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 3v18"></path>
+                <path d="M5 8c3 3 11 3 14 0"></path>
+                <path d="M5 16c3-3 11-3 14 0"></path>
+              </svg>
+            </div>
+            <h3>{{ b.title }}</h3>
+            <p>{{ b.text }}</p>
+          </article>
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="prod-colours">
+  <div class="container">
+    <div class="section-header" appRevealOnScroll>
+      <div>
+        <p class="eyebrow">[ colour range ]</p>
+        <h2 class="section-title">Architectural colour collections <span class="title-dot"></span></h2>
+      </div>
+      <p class="prod-colours-note">Custom shades matched on request.</p>
+    </div>
+
+    <div class="colour-grid">
+      @for (family of colourFamilies; track family.name; let i = $index) {
+        <article class="colour-card" appRevealOnScroll [revealDelay]="i * 70">
+          <div class="colour-card-top">
+            <h3>{{ family.name }}</h3>
+            <p>{{ family.finishes }}</p>
+          </div>
+          <p class="colour-desc">{{ family.description }}</p>
+          <div class="colour-swatches">
+            @for (c of family.colours; track c.name) {
+              <div class="swatch">
+                <span class="swatch-chip" [ngStyle]="{ 'background-color': c.hex }"></span>
+                <span>{{ c.name }}</span>
+              </div>
+            }
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="prod-applications">
+  <div class="container app-grid">
+    <div appRevealOnScroll>
+      <p class="eyebrow eyebrow--light">[ best fit ]</p>
+      <h2 class="section-title section-title--light">Where it works best.</h2>
+      <ul class="app-list">
+        @for (a of applicationAreas; track a) {
+          <li>
+            <span aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"></path></svg>
+            </span>
+            {{ a }}
+          </li>
+        }
+      </ul>
+    </div>
+
+    <div class="spec-card" appRevealOnScroll [revealDelay]="120">
+      <h3>Typical specifications</h3>
+      <dl>
+        <div><dt>Thickness range</dt><dd>10-40 mm, project specific</dd></div>
+        <div><dt>Sound absorption</dt><dd>NRC up to 1.0</dd></div>
+        <div><dt>Substrates</dt><dd>Concrete, metal deck, plasterboard, prepared finishes</dd></div>
+        <div><dt>Finish options</dt><dd>Fine / medium texture, trowel-tight or free-spray</dd></div>
+        <div><dt>Content</dt><dd>Recycled cellulose, low VOC formulation</dd></div>
+      </dl>
+      <a routerLink="/technology" class="btn-primary">Request technical documentation</a>
+    </div>
+  </div>
+</section>

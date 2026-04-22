@@ -1,0 +1,225 @@
+.intro-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: #f8fafc;
+  background:
+    linear-gradient(110deg, rgba(245, 158, 11, 0.14) 0 1px, transparent 1px 100%),
+    linear-gradient(135deg, #071411 0%, #0f172a 48%, #153f36 100%);
+  background-size: 96px 100%, auto;
+  animation: introHold 6.4s ease both;
+}
+
+.intro-splash--leaving {
+  animation: introExit 0.52s cubic-bezier(0.7, 0, 0.2, 1) forwards;
+}
+
+.intro-noise,
+.intro-grid,
+.intro-wave {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.intro-noise {
+  opacity: 0.16;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.07) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 5px);
+  mix-blend-mode: overlay;
+}
+
+.intro-grid {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 100%),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 100%);
+  background-size: 80px 80px;
+  mask-image: linear-gradient(180deg, transparent 0%, #000 24%, #000 76%, transparent 100%);
+  transform: perspective(900px) rotateX(58deg) translateY(12%);
+  transform-origin: center bottom;
+}
+
+.intro-wave {
+  width: 160%;
+  height: 160%;
+  left: -30%;
+  top: -30%;
+  border: 1px solid rgba(232, 246, 241, 0.14);
+  border-radius: 44%;
+  animation: introWave 7s linear infinite;
+}
+
+.intro-wave--two {
+  border-color: rgba(245, 158, 11, 0.18);
+  animation-duration: 10s;
+  animation-direction: reverse;
+  transform: rotate(18deg);
+}
+
+.intro-content {
+  position: relative;
+  width: min(92vw, 760px);
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  padding: 2rem;
+  animation: introContent 0.9s ease both;
+}
+
+.intro-logo-frame {
+  width: min(46vw, 310px);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  margin-bottom: 1.25rem;
+  filter: drop-shadow(0 24px 52px rgba(0, 0, 0, 0.38));
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    animation: introLogoFloat 2.8s ease-in-out infinite;
+  }
+}
+
+.intro-kicker {
+  margin: 0 0 0.55rem;
+  color: #fbbf24;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.intro-content h1 {
+  max-width: 680px;
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(2rem, 3.2rem, 4rem);
+  line-height: 1.02;
+  font-weight: 700;
+}
+
+.intro-loader {
+  width: min(70vw, 340px);
+  height: 3px;
+  margin-top: 1.5rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+
+  span {
+    display: block;
+    height: 100%;
+    width: 0;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #2f7d67, #fbbf24);
+    transition: width 0.12s linear;
+  }
+}
+
+.intro-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.2rem;
+}
+
+.intro-sound,
+.intro-skip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0.65rem 1.05rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 700;
+  transition: transform 0.24s ease, border-color 0.24s ease, background-color 0.24s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: rgba(251, 191, 36, 0.58);
+    background: rgba(255, 255, 255, 0.13);
+  }
+}
+
+.intro-sound {
+  min-width: 150px;
+  border-color: rgba(251, 191, 36, 0.45);
+  background: rgba(251, 191, 36, 0.12);
+}
+
+.intro-skip {
+  background: #fbbf24;
+  color: #0f172a;
+  border-color: #fbbf24;
+}
+
+.intro-sound-icon {
+  width: 8px;
+  height: 18px;
+  margin-right: 0.55rem;
+  border-radius: 999px;
+  background: currentColor;
+  box-shadow: 6px 0 0 currentColor, 12px 0 0 currentColor;
+  transform: scaleY(0.72);
+}
+
+@keyframes introContent {
+  from { opacity: 0; transform: translateY(18px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes introLogoFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-8px) scale(1.015); }
+}
+
+@keyframes introWave {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes introExit {
+  to {
+    opacity: 0;
+    transform: scale(1.04);
+    visibility: hidden;
+  }
+}
+
+@keyframes introHold {
+  from { opacity: 1; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 576px) {
+  .intro-content h1 {
+    font-size: 2.15rem;
+  }
+
+  .intro-logo-frame {
+    width: min(68vw, 260px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-splash,
+  .intro-splash--leaving,
+  .intro-content,
+  .intro-logo-frame img,
+  .intro-wave {
+    animation: none !important;
+  }
+}

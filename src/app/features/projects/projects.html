@@ -1,0 +1,108 @@
+<section class="projects-hero">
+  <div class="projects-ambient" aria-hidden="true"></div>
+  <div class="container projects-hero-grid">
+    <div class="projects-copy" appRevealOnScroll>
+      <p class="eyebrow eyebrow--light">[ Projects ]</p>
+      <h1>Acoustic spray installations shaped around real architecture.</h1>
+      <p>
+        Explore how Accoustic360 controls reverberation across factories,
+        workplaces, lecture halls, studios and adaptive reuse projects without
+        losing the honesty of exposed ceilings.
+      </p>
+
+      <div class="projects-actions">
+        <a routerLink="/technology" class="btn-primary">Plan a project audit</a>
+        <a routerLink="/applications" class="btn-project-ghost">View applications</a>
+      </div>
+    </div>
+
+    <div class="projects-showcase" appRevealOnScroll [revealDelay]="140">
+      <div class="showcase-card showcase-card--main">
+        <img [src]="featuredProject.image" [alt]="featuredProject.title" />
+        <div class="showcase-caption">
+          <span>{{ featuredProject.category }}</span>
+          <strong>{{ featuredProject.title }}</strong>
+        </div>
+      </div>
+      <div class="showcase-card showcase-card--small">
+        <span class="wave-icon" aria-hidden="true">
+          <i></i><i></i><i></i><i></i>
+        </span>
+        <strong>Low reflection zones</strong>
+        <p>Ceiling build-ups mapped to speech and activity patterns.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="projects-metrics">
+  <div class="container metric-grid">
+    @for (metric of projectMetrics; track metric.label; let i = $index) {
+      <article class="metric-card" appRevealOnScroll [revealDelay]="i * 70">
+        <strong>{{ metric.value }}</strong>
+        <span>{{ metric.label }}</span>
+        <p>{{ metric.detail }}</p>
+      </article>
+    }
+  </div>
+</section>
+
+<section class="projects-board">
+  <div class="container">
+    <div class="projects-board-head" appRevealOnScroll>
+      <div>
+        <p class="eyebrow">[ installation library ]</p>
+        <h2 class="section-title">Featured acoustic projects <span class="title-dot"></span></h2>
+      </div>
+
+      <div class="filter-chips" aria-label="Filter projects by type">
+        @for (cat of categories; track cat) {
+          <button
+            type="button"
+            class="filter-chip"
+            [class.filter-chip--active]="activeCategory === cat"
+            (click)="setCategory(cat)">
+            {{ cat }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <div class="proj-grid">
+      @for (project of filteredProjects; track project.id; let i = $index) {
+        <article class="proj-card" appRevealOnScroll [revealDelay]="i * 65">
+          <div class="proj-image">
+            <img [src]="project.image" [alt]="project.title" loading="lazy" />
+            <span class="proj-status" [ngClass]="statusClass(project.status)">
+              {{ project.status }}
+            </span>
+          </div>
+
+          <div class="proj-card-body">
+            <div class="proj-card-meta">
+              <span>{{ project.location }}</span>
+              <strong>{{ project.year }}</strong>
+            </div>
+
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.summary }}</p>
+
+            <div class="proj-tags">
+              @for (tag of project.tags; track tag) {
+                <span>{{ tag }}</span>
+              }
+            </div>
+
+            <div class="proj-footer">
+              <span>{{ project.category }}</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 12h14"></path>
+                <path d="m13 6 6 6-6 6"></path>
+              </svg>
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>
